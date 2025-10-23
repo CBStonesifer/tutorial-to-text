@@ -15,6 +15,7 @@ The system uses:
 - **Model**: HuggingFace SmolVLM2-500M-Video-Instruct deployed on Baseten
 
 ---
+<img width="2527" height="1214" alt="Tutorial Timeline" src="https://github.com/user-attachments/assets/54dd148a-82f5-44df-a6e0-130d86806584" />
 
 ## Quick Start
 
