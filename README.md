@@ -65,7 +65,7 @@ After deployment completes:
 1. Go to your [Baseten dashboard](https://app.baseten.co/)
 2. Find your newly deployed model
 3. Copy the **Model ID** (you'll need this for the API configuration)
-4. Go to **Settings � API Keys** and copy your **API Key**
+4. Go to **Settings -> API Keys** and copy your **API Key**
 
 **Note**: The first deployment may take 10-15 minutes as Baseten builds the container and downloads the model weights (~1GB).
 
@@ -85,20 +85,20 @@ The model deployment in `model_deployment/tutorial_helper/` includes:
 ### Step 1: Create a GCP Project
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Click "Select a project" � "New Project"
+2. Click "Select a project" -> "New Project"
 3. Enter project name (e.g., `tutorial-helper`)
 4. Click "Create"
 5. Note your **Project ID** (you'll need this later)
 
 ### Step 2: Enable Cloud Storage API
 
-1. In Cloud Console, navigate to **APIs & Services** � **Library**
+1. In Cloud Console, navigate to **APIs & Services** -> **Library**
 2. Search for "Cloud Storage API"
 3. Click on it and press "Enable"
 
 ### Step 3: Create a Storage Bucket
 
-1. Navigate to **Cloud Storage** � **Buckets**
+1. Navigate to **Cloud Storage** -> **Buckets**
 2. Click "Create Bucket"
 3. Configure:
    - **Name**: Choose globally unique name (e.g., `tutorial-helper-videos-[your-initials]`)
@@ -111,7 +111,7 @@ The model deployment in `model_deployment/tutorial_helper/` includes:
 
 ### Step 4: Create Service Account
 
-1. Navigate to **IAM & Admin** � **Service Accounts**
+1. Navigate to **IAM & Admin** -> **Service Accounts**
 2. Click "Create Service Account"
 3. Enter details:
    - **Name**: `tutorial-helper-api`
@@ -119,13 +119,13 @@ The model deployment in `model_deployment/tutorial_helper/` includes:
 4. Click "Create and Continue"
 5. Grant roles:
    - Add role: **Storage Object Admin**
-6. Click "Continue" � "Done"
+6. Click "Continue" -> "Done"
 
 ### Step 5: Create Service Account Key
 
 1. Click on the service account you just created
 2. Go to **Keys** tab
-3. Click **Add Key** � **Create new key**
+3. Click **Add Key** -> **Create new key**
 4. Select **JSON** format
 5. Click "Create"
 6. Save the JSON file securely
@@ -146,7 +146,7 @@ The model deployment in `model_deployment/tutorial_helper/` includes:
 }
 ```
 
-� **Important**: Keep this file secure and never commit it to version control!
+-> **Important**: Keep this file secure and never commit it to version control!
 
 ---
 
@@ -456,7 +456,7 @@ truss logs tutorial_helper
 - Check bucket permissions allow your service account access
 
 **"Baseten API error"**
-- Verify `BASETEN_API_KEY` is correct (from Baseten Settings � API Keys)
+- Verify `BASETEN_API_KEY` is correct (from Baseten Settings -> API Keys)
 - Ensure `BASETEN_MODEL_ID` matches your deployed model
 - Check model status in Baseten dashboard (should be "Active")
 - Verify model has finished deploying (can take 10-15 minutes initially)
@@ -499,7 +499,7 @@ truss logs tutorial_helper
 
 ## Security Notes
 
-� **Important Security Practices:**
+-> **Important Security Practices:**
 
 1. **Never commit `.env` files** - They contain sensitive credentials
 2. **Keep GCP service account JSON secure** - Treat it like a password
