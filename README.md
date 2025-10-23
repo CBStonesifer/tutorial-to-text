@@ -332,14 +332,6 @@ tutorialHelper/
 
 ## API Endpoints
 
-### `GET /health`
-Health check endpoint.
-
-**Response:**
-```json
-{"status": "healthy"}
-```
-
 ### `POST /api/upload-video`
 Upload and process a video file.
 
@@ -380,9 +372,6 @@ Upload and process a video file.
   }
 }
 ```
-
-### `GET /api/test-timeline`
-Returns mock data for testing the timeline component without processing a real video.
 
 ---
 
@@ -441,93 +430,8 @@ truss logs tutorial_helper
 
 ---
 
-## Troubleshooting
-
-### Backend Issues
-
-**"Cannot connect to GCP"**
-- Verify `GCP_CREDENTIALS_JSON` is properly formatted as a single-line string
-- Ensure the service account has "Storage Object Admin" role
-- Check that Cloud Storage API is enabled in your GCP project
-
-**"Bucket not found"**
-- Verify `GCP_BUCKET_NAME` matches your actual bucket name
-- Ensure the bucket exists in GCP Console
-- Check bucket permissions allow your service account access
-
-**"Baseten API error"**
-- Verify `BASETEN_API_KEY` is correct (from Baseten Settings -> API Keys)
-- Ensure `BASETEN_MODEL_ID` matches your deployed model
-- Check model status in Baseten dashboard (should be "Active")
-- Verify model has finished deploying (can take 10-15 minutes initially)
-
-**"CORS errors"**
-- Ensure frontend is running on `localhost:3000`
-- Backend CORS is configured for `localhost:3000` only
-- Check that both services are running
-
-### Frontend Issues
-
-**"Cannot connect to API"**
-- Verify backend is running on port 8000
-- Check `curl http://localhost:8000/health` returns success
-- Verify no other service is using port 8000
-
-**"Authentication failed"**
-- Password is `tutorial123` (case-sensitive)
-- Clear browser cache and sessionStorage
-- Check browser console for errors
-
-### Model Issues
-
-**"Model deployment failed"**
-- Ensure you ran `truss login` first
-- Use `--trusted` flag: `truss push --trusted tutorial_helper`
-- Check deployment logs: `truss logs tutorial_helper`
-
-**"Model inference timeout"**
-- First inference can take 30-60 seconds (model loads into memory)
-- Subsequent requests should be faster
-- Check video file size (large files take longer)
-
-**"No frames extracted"**
-- Ensure video codec is supported (MP4, MOV, AVI, WebM, MKV)
-- Check video isn't corrupted
-- Try a different video file
-
----
-
-## Security Notes
-
--> **Important Security Practices:**
-
-1. **Never commit `.env` files** - They contain sensitive credentials
-2. **Keep GCP service account JSON secure** - Treat it like a password
-3. **Rotate API keys regularly** - Both GCP and Baseten keys
-4. **Use environment-specific buckets** - Separate buckets for dev/staging/production
-5. **Review bucket permissions** - Ensure minimal required access
-6. **Change default password** - The `tutorial123` password is for demo only
-
-For production deployment:
-- Use proper authentication (not hardcoded password)
-- Enable HTTPS/TLS
-- Set up proper CORS policies
-- Use signed URLs with appropriate expiration times
-- Enable GCP audit logging
-- Implement rate limiting on API endpoints
-
----
-
 ## License
 
 MIT
 
 ---
-
-## Support
-
-For issues or questions:
-1. Check the Troubleshooting section above
-2. Review logs in terminal running the backend
-3. Check browser console for frontend errors
-4. Review Baseten dashboard for model status
